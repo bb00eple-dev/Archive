@@ -125,6 +125,31 @@
 /* Character profiles & pair archive */
 .profile-editor{flex-shrink:0;max-height:58%;overflow:auto;padding:10px;margin:0 0 9px;border:1px solid #d9e9ed;border-radius:12px;background:rgba(255,255,255,.86);display:flex;flex-direction:column;gap:7px}.profile-editor.hidden{display:none}.profile-editor-head,.profile-form-actions{display:flex;align-items:center;gap:6px;color:#7da4b9;font-size:11px}.profile-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.profile-area{height:auto;min-height:58px;padding:8px;resize:vertical;line-height:1.6}.profile-form-actions{justify-content:flex-end}.profile-card-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.profile-card-actions .btn{height:24px;min-height:24px;font-size:9px}.profile-detail{white-space:pre-wrap;overflow-wrap:anywhere;font-size:10px;line-height:1.8;color:#8caab6;margin-top:7px}.profile-section-label{font-size:9px;color:#a3c1cb;margin-top:7px}.profile-editor input,.profile-editor textarea,.profile-editor select{width:100%}
 @media(max-width:570px){.profile-editor{max-height:62%}.profile-form-grid{grid-template-columns:1fr 1fr}.profile-area{min-height:48px}}
+
+/* RP list controls: explicit compact rows, no flex-wrap side effects. */
+#page-list>.list-main-toolbar{display:flex;flex-wrap:nowrap;align-items:center;gap:5px;min-width:0;padding:0 3px 8px;margin-bottom:5px}
+#page-list>.list-main-toolbar .brand{white-space:nowrap;letter-spacing:1.1px;font-size:11px;min-width:0}
+#page-list>.list-main-toolbar .flex{flex:1 1 auto;min-width:2px}
+#page-list>.list-main-toolbar .btn{flex:0 0 auto;padding-left:8px;padding-right:8px}
+#page-list>.list-action-row{display:flex;align-items:center;justify-content:flex-start;gap:5px;flex:0 0 auto;padding:0 3px 7px;margin:0 0 7px;border-bottom:1px solid #e0eeeb}
+#page-list>.list-action-row .btn{flex:0 0 auto}
+#page-list>.list-filter-toolbar{display:flex;flex-wrap:nowrap;align-items:center;gap:5px;padding:0 3px 7px;margin:0 0 8px;min-width:0}
+#page-list>.list-filter-toolbar .btn[data-filter="all"]{flex:0 0 auto;min-width:42px;padding:0 9px}
+#page-list>.list-filter-toolbar .list-fav-filter{flex:0 0 32px!important;width:32px!important;min-width:32px!important;max-width:32px!important;padding:0!important;text-align:center}
+#page-list>.list-filter-toolbar select{flex:0 1 auto;min-width:0;width:auto;max-width:112px;padding-left:7px;padding-right:18px}
+#page-list>.list-filter-toolbar .flex{flex:1 1 auto;min-width:2px}
+#page-list>.list-filter-toolbar #visible-count{flex:0 0 auto;white-space:nowrap}
+@media(max-width:460px){
+ #page-list>.list-main-toolbar{gap:4px;padding-left:1px;padding-right:1px}
+ #page-list>.list-main-toolbar .brand{font-size:10px;letter-spacing:.8px}
+ #page-list>.list-main-toolbar .btn{padding-left:7px;padding-right:7px;font-size:9px}
+ #page-list>.list-action-row{gap:5px;padding-left:1px;padding-bottom:6px}
+ #page-list>.list-filter-toolbar{gap:4px;padding-left:1px;padding-right:1px}
+ #page-list>.list-filter-toolbar .list-fav-filter{flex-basis:29px!important;width:29px!important;min-width:29px!important;max-width:29px!important}
+ #page-list>.list-filter-toolbar select{max-width:100px;font-size:9px;padding-left:6px;padding-right:16px}
+ #page-list>.list-filter-toolbar .btn[data-filter="all"]{min-width:38px;padding-left:7px;padding-right:7px}
+}
+
 </style>
 
 <style id="turntable-organza-jewel-theme">
@@ -1131,42 +1156,6 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
 </style>
 
 
-
-<style id="rp-minimal-layout-fix">
-/* Minimal, stable RP list controls */
-#page-list{min-width:0}
-#page-list .list-primary-toolbar,
-#page-list .list-filter-toolbar{display:flex;align-items:center;flex-wrap:nowrap;min-width:0;gap:5px}
-#page-list .list-primary-toolbar{padding-bottom:7px;margin-bottom:7px}
-#page-list .list-primary-toolbar .brand{font-size:10px;letter-spacing:1.5px;white-space:nowrap}
-#page-list .list-primary-toolbar .btn,
-#page-list .list-filter-toolbar .btn,
-#page-list .list-filter-toolbar select{height:27px;min-width:0;flex:0 0 auto;padding:0 8px;font-size:9px;white-space:nowrap}
-#page-list .list-filter-toolbar{gap:5px;padding-bottom:7px;margin-bottom:7px}
-#page-list .list-filter-toolbar [data-filter="fav"]{width:29px;min-width:29px;padding:0;justify-content:center;flex:0 0 29px}
-#page-list .list-filter-toolbar #cat-filter{max-width:88px}
-#page-list .list-filter-toolbar #sort{max-width:96px}
-#page-list .list-filter-toolbar .flex{flex:1 1 auto}
-#page-list .rp-card .card-meta{display:grid;grid-template-columns:minmax(0,1fr) 14px;align-items:start;column-gap:5px}
-#page-list .rp-card .card-meta-text{min-width:0;overflow-wrap:anywhere}
-#page-list .rp-card .card-favorite{display:block;width:14px;min-width:14px;max-width:14px;text-align:center;justify-self:end;white-space:nowrap;font-size:10px;line-height:1.5;flex:none}
-#page-list .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
-#page-list .rp-card{padding:10px;min-width:0}
-@media(max-width:390px){
- #page-list .list-primary-toolbar,#page-list .list-filter-toolbar{gap:4px}
- #page-list .list-primary-toolbar .btn,#page-list .list-filter-toolbar .btn,#page-list .list-filter-toolbar select{padding-left:6px;padding-right:6px;font-size:8.5px}
- #page-list .list-primary-toolbar .brand{font-size:9px;letter-spacing:1px}
- #page-list .list-filter-toolbar #cat-filter{max-width:76px}
- #page-list .list-filter-toolbar #sort{max-width:84px}
- #page-list .cards{gap:6px}
- #page-list .rp-card{padding:8px}
-}
-@media(max-width:340px){
- #page-list .list-filter-toolbar{gap:3px}
- #page-list .list-filter-toolbar #cat-filter{max-width:68px}
- #page-list .list-filter-toolbar #sort{max-width:76px}
-}
-</style>
 </head>
 <body>
 <div id="wallpaper" aria-hidden="true"></div>
@@ -1321,9 +1310,10 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
 </section>
 
 <section id="page-list" class="page">
-<div class="toolbar list-primary-toolbar"><button id="list-home" class="btn">← 홈</button><span class="brand">YOUR RP LOGS</span><span class="flex"></span><button id="list-search-toggle" class="btn">⌕ 검색</button><button id="list-new" class="btn active">＋ 기록</button></div>
+<div class="toolbar list-main-toolbar"><button id="list-home" class="btn">← 홈</button><span class="brand">YOUR RP LOGS</span><span class="flex"></span><button id="list-search-toggle" class="btn">⌕ 검색</button><button id="list-new" class="btn active">＋ 기록</button></div>
+<div class="list-action-row"><button id="list-add-category" class="btn">＋ 분류</button><button id="list-board" class="btn">정리</button></div>
 <div id="search-row" class="hidden" style="display:flex;gap:5px;align-items:center;margin-bottom:8px;flex-shrink:0"><input id="search" class="field" placeholder="제목 · 플랫폼 · 대사 검색"><button id="search-close" class="btn">닫기</button></div>
-<div class="toolbar list-filter-toolbar"><button class="btn active" data-filter="all">전체</button><button class="btn" data-filter="fav" aria-label="즐겨찾기">♡</button><button id="list-add-category" class="btn">＋ 분류</button><button id="list-board" class="btn">정리</button><select id="cat-filter" class="btn" aria-label="분류 필터" style="appearance:auto;max-width:105px"><option value="all">분류</option></select><select id="sort" class="btn" aria-label="정렬" style="appearance:auto"><option value="new">최근순</option><option value="old">오래된 순</option><option value="title">제목순</option></select><span class="flex"></span><span id="visible-count" class="micro">0개</span></div>
+<div class="toolbar list-filter-toolbar"><button class="btn active" data-filter="all">전체</button><button class="btn list-fav-filter" data-filter="fav" aria-label="즐겨찾기">♡</button><select id="cat-filter" class="btn" aria-label="분류 필터" style="appearance:auto"><option value="all">분류</option></select><select id="sort" class="btn" aria-label="정렬"><option value="new">최근순</option><option value="old">오래된 순</option><option value="title">제목순</option></select><span class="flex"></span><span id="visible-count" class="micro">0개</span></div>
 <div class="card-scroll"><div id="cards" class="cards"></div><div id="list-empty" class="empty"><button id="first-log" class="btn" style="margin-top:10px">＋ 첫 RP 기록</button></div></div>
 <div class="footerline"><span>stories we wrote together ♡</span><button id="list-backup" class="btn">JSON 백업 ↗</button></div>
 </section>
@@ -2323,7 +2313,7 @@ function ttSetPlaying(yes){$('turntable-widget').classList.toggle('is-playing',!
 function ttApplyVisuals(){const layer=$('tt-color-layer'),video=$('tt-video'),label=$('tt-center-label');video.style.opacity=String(Math.max(0,Math.min(100,Number(ttSettings.videoOpacity)||0))/100);layer.style.opacity=String(Math.max(0,Math.min(100,Number(ttSettings.overlayOpacity)||0))/100);const c=ttSettings.color||'#b9dce0';if(ttSettings.mode==='gradient'){layer.style.background=`linear-gradient(135deg,${c},rgba(255,255,255,.9) 48%,${c})`}else if(ttSettings.mode==='soft'){layer.style.background=`radial-gradient(circle at 35% 30%,rgba(255,255,255,.9),${c} 48%,rgba(150,197,210,.9))`}else if(ttSettings.mode==='dots'){layer.style.background=`radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1.8px),${c}`;layer.style.backgroundSize='8px 8px,auto'}else if(ttSettings.mode==='stripes'){layer.style.background=`repeating-linear-gradient(135deg,rgba(255,255,255,.48) 0 2px,transparent 2px 8px),${c}`}else{layer.style.background=c}if(ttSettings.mode!=='dots'&&ttSettings.mode!=='stripes')layer.style.backgroundSize='auto';label.textContent=ttSettings.label||'';label.style.display=ttSettings.label?'flex':'none';$('tt-speed-value').textContent=ttSettings.speed+'초/회전';$('tt-video-opacity-value').textContent=ttSettings.videoOpacity+'%';$('tt-overlay-opacity-value').textContent=ttSettings.overlayOpacity+'%';$('tt-vinyl').style.setProperty('--tt-speed',Math.max(3,Number(ttSettings.speed)||7)+'s')}
 function ttFillControls(){$('tt-url').value=ttSettings.url||'';$('tt-color').value=ttSettings.color||TT_DEFAULTS.color;$('tt-mode').value=ttSettings.mode||TT_DEFAULTS.mode;$('tt-video-opacity').value=ttSettings.videoOpacity;$('tt-overlay-opacity').value=ttSettings.overlayOpacity;$('tt-label-input').value=ttSettings.label||'';$('tt-speed').value=ttSettings.speed;ttApplyVisuals()}
 function ttAskApi(){if(window.YT&&window.YT.Player){ttCreatePlayer();return}if(ttApiRequested)return;ttApiRequested=true;const oldReady=window.onYouTubeIframeAPIReady;window.onYouTubeIframeAPIReady=function(){try{if(typeof oldReady==='function')oldReady()}catch(e){}ttCreatePlayer()};const tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';tag.async=true;tag.onerror=()=>{ttApiRequested=false;ttSetStatus('YouTube API 불러오기 실패. 인터넷 연결 확인 필요.')};document.head.appendChild(tag)}
-function ttCreatePlayer(){if(ttPlayer||!window.YT||!window.YT.Player)return;try{ttPlayer=new YT.Player('tt-video',{width:'100%',height:'100%',videoId:ttVideoId||undefined,playerVars:{autoplay:0,controls:0,disablekb:1,playsinline:1,rel:0,modestbranding:1,iv_load_policy:3,enablejsapi:1,origin:location.origin},events:{onReady:()=>{ttReady=true;try{ttPlayer.setVolume(75);if(ttVideoId)ttPlayer.cueVideoById(ttVideoId)}catch(e){}ttSetStatus(ttVideoId?'영상 준비 완료. 재생 버튼으로 재생.':'YouTube 영상 주소 입력 필요.')},onStateChange:e=>{const playing=e.data===YT.PlayerState.PLAYING;ttSetPlaying(playing);if(playing){try{const d=ttPlayer.getVideoData();if(d&&d.title)$('tt-title').textContent=d.title}catch(err){}}},onError:e=>{ttSetPlaying(false);ttSetStatus('YouTube 재생 제한 또는 임베드 불가 영상 (오류 '+e.data+'). HTTPS 웹 주소에서 다시 시도해 줘.')}}})}catch(e){ttSetStatus('플레이어 초기화 실패. 영상 주소 재적용 필요.')}}
+function ttCreatePlayer(){if(ttPlayer||!window.YT||!window.YT.Player)return;try{ttPlayer=new YT.Player('tt-video',{width:'100%',height:'100%',videoId:ttVideoId||undefined,playerVars:{autoplay:0,controls:0,disablekb:1,playsinline:1,rel:0,modestbranding:1,iv_load_policy:3},events:{onReady:()=>{ttReady=true;try{ttPlayer.setVolume(75);if(ttVideoId)ttPlayer.cueVideoById(ttVideoId)}catch(e){}ttSetStatus(ttVideoId?'영상 준비 완료. 재생 버튼으로 재생.':'YouTube 영상 주소 입력 필요.')},onStateChange:e=>{const playing=e.data===YT.PlayerState.PLAYING;ttSetPlaying(playing);if(playing){try{const d=ttPlayer.getVideoData();if(d&&d.title)$('tt-title').textContent=d.title}catch(err){}}},onError:e=>{ttSetPlaying(false);ttSetStatus('YouTube 재생 제한 또는 임베드 불가 영상 (오류 '+e.data+'). HTTPS 웹 주소에서 다시 시도해 줘.')}}})}catch(e){ttSetStatus('플레이어 초기화 실패. 영상 주소 재적용 필요.')}}
 function ttLoadVideo(){const id=ttGetId($('tt-url').value);if(!id){ttSetStatus('유효한 YouTube 영상 링크 또는 11자리 영상 ID 입력 필요.');return}ttSettings.url=$('tt-url').value.trim();ttVideoId=id;ttPersist();$('tt-title').textContent='영상 불러오는 중…';ttSetStatus('YouTube 영상 준비 중.');ttAskApi();if(ttReady&&ttPlayer){try{ttPlayer.cueVideoById(id);ttSetPlaying(false);ttSetStatus('영상 준비 완료. 재생 버튼으로 재생.')}catch(e){ttSetStatus('영상 준비 실패. 주소 확인 필요.')}}}
 function ttPlayPause(){if(!ttPlayer||!ttReady){if(!ttVideoId){$('tt-settings').hidden=false;$('tt-settings-toggle').textContent='⌃';ttSetStatus('YouTube 영상 주소 입력 및 적용 필요.')}else{ttAskApi();ttSetStatus('YouTube 플레이어 준비 중. 잠시 후 재시도.')}return}try{const state=ttPlayer.getPlayerState();if(state===YT.PlayerState.PLAYING){ttPlayer.pauseVideo()}else{ttPlayer.playVideo();try{ttPlayer.unMute();ttPlayer.setVolume(75);$('tt-mute').textContent='♫'}catch(e){}}}catch(e){ttSetStatus('재생 시작 실패. 영상 주소 재적용 필요.')}}
 function ttToggleMute(){if(!ttPlayer||!ttReady){ttSetStatus('영상 불러오기 필요.');return}try{if(ttPlayer.isMuted()){ttPlayer.unMute();ttPlayer.setVolume(75);$('tt-mute').textContent='♫'}else{ttPlayer.mute();$('tt-mute').textContent='♩'}}catch(e){}}
@@ -2533,7 +2523,7 @@ renderPairDetail=function(){
  let pairYTPlayer=null,pairYTReady=false,pairYTRequested=false,pairYTVideoId='';
  const pairMusicVideoId=raw=>{const v=String(raw||'').trim();if(/^[\w-]{11}$/.test(v))return v;try{const u=new URL(v);const host=u.hostname.toLowerCase();if(host==='youtu.be'||host.endsWith('.youtu.be'))return u.pathname.split('/').filter(Boolean)[0]||'';if(['youtube.com','www.youtube.com','m.youtube.com','music.youtube.com','youtube-nocookie.com','www.youtube-nocookie.com'].includes(host)){const id=u.searchParams.get('v');if(id)return id;const m=u.pathname.match(/\/(?:embed|shorts|live|v)\/([\w-]{11})/);if(m)return m[1]}}catch(e){}const m=v.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/|\/live\/)([\w-]{11})/);return m?m[1]:''};
  const pairYTPlayPending=()=>{if(!pairYTReady||!pairYTPlayer||!pairYTVideoId)return;try{pairYTPlayer.loadVideoById(pairYTVideoId);pairYTPlayer.setVolume(Math.round(window.__pairTrackVolume??35))}catch(e){}};
- const pairYTCreate=()=>{if(pairYTPlayer||!window.YT?.Player)return;const host=document.createElement('div');host.id='pair-page-music-player';host.style.cssText='position:fixed;width:1px;height:1px;left:-10px;bottom:-10px;opacity:.01;pointer-events:none;overflow:hidden';document.body.appendChild(host);try{pairYTPlayer=new YT.Player(host,{width:'1',height:'1',videoId:pairYTVideoId||undefined,playerVars:{autoplay:0,controls:0,playsinline:1,rel:0,enablejsapi:1,origin:location.origin},events:{onReady:()=>{pairYTReady=true;pairYTPlayPending()},onError:()=>{pairYTReady=false}}})}catch(e){pairYTPlayer=null}};
+ const pairYTCreate=()=>{if(pairYTPlayer||!window.YT?.Player)return;const host=document.createElement('div');host.id='pair-page-music-player';host.style.cssText='position:fixed;width:1px;height:1px;left:-10px;bottom:-10px;opacity:.01;pointer-events:none;overflow:hidden';document.body.appendChild(host);try{pairYTPlayer=new YT.Player(host,{width:'1',height:'1',videoId:pairYTVideoId||undefined,playerVars:{autoplay:0,controls:0,playsinline:1,rel:0,enablejsapi:1},events:{onReady:()=>{pairYTReady=true;pairYTPlayPending()},onError:()=>{pairYTReady=false}}})}catch(e){pairYTPlayer=null}};
  const pairYTEnsure=()=>{if(window.YT?.Player){pairYTCreate();return}if(pairYTRequested)return;pairYTRequested=true;const previous=window.onYouTubeIframeAPIReady;window.onYouTubeIframeAPIReady=function(){try{if(typeof previous==='function')previous()}catch(e){}pairYTCreate()};if(!document.querySelector('script[src*="youtube.com/iframe_api"]')){const tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';tag.async=true;tag.onerror=()=>{pairYTRequested=false};document.head.appendChild(tag)}};
  const pairPlayTrack=(url,volume=35)=>{const track=String(url||'').trim();window.__pairTrackVolume=Math.max(0,Math.min(100,Number(volume)||0));const id=pairMusicVideoId(track);if(id){soundtrack.pause();soundtrack.removeAttribute('src');soundtrack.load();pairYTVideoId=id;pairYTEnsure();if(pairYTReady&&pairYTPlayer)pairYTPlayPending();return}if(pairYTPlayer&&pairYTReady){try{pairYTPlayer.stopVideo()}catch(e){}}pairYTVideoId='';if(track){if(soundtrack.src!==track){soundtrack.pause();soundtrack.src=track}soundtrack.volume=window.__pairTrackVolume/100;soundtrack.play().catch(()=>{})}else{soundtrack.pause();soundtrack.removeAttribute('src');soundtrack.load()}};
 
