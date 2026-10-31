@@ -126,13 +126,17 @@
 .profile-editor{flex-shrink:0;max-height:58%;overflow:auto;padding:10px;margin:0 0 9px;border:1px solid #d9e9ed;border-radius:12px;background:rgba(255,255,255,.86);display:flex;flex-direction:column;gap:7px}.profile-editor.hidden{display:none}.profile-editor-head,.profile-form-actions{display:flex;align-items:center;gap:6px;color:#7da4b9;font-size:11px}.profile-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.profile-area{height:auto;min-height:58px;padding:8px;resize:vertical;line-height:1.6}.profile-form-actions{justify-content:flex-end}.profile-card-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.profile-card-actions .btn{height:24px;min-height:24px;font-size:9px}.profile-detail{white-space:pre-wrap;overflow-wrap:anywhere;font-size:10px;line-height:1.8;color:#8caab6;margin-top:7px}.profile-section-label{font-size:9px;color:#a3c1cb;margin-top:7px}.profile-editor input,.profile-editor textarea,.profile-editor select{width:100%}
 @media(max-width:570px){.profile-editor{max-height:62%}.profile-form-grid{grid-template-columns:1fr 1fr}.profile-area{min-height:48px}}
 
-/* RP list controls: explicit compact rows, no flex-wrap side effects. */
-#page-list>.list-main-toolbar{display:flex;flex-wrap:nowrap;align-items:center;gap:5px;min-width:0;padding:0 3px 8px;margin-bottom:5px}
-#page-list>.list-main-toolbar .brand{white-space:nowrap;letter-spacing:1.1px;font-size:11px;min-width:0}
-#page-list>.list-main-toolbar .flex{flex:1 1 auto;min-width:2px}
-#page-list>.list-main-toolbar .btn{flex:0 0 auto;padding-left:8px;padding-right:8px}
-#page-list>.list-action-row{display:flex;align-items:center;justify-content:flex-start;gap:5px;flex:0 0 auto;padding:0 3px 7px;margin:0 0 7px;border-bottom:1px solid #e0eeeb}
-#page-list>.list-action-row .btn{flex:0 0 auto}
+/* RP list toolbar: all primary actions stay on one compact line. */
+#page-list>.list-main-toolbar{display:flex;flex-wrap:nowrap;align-items:center;gap:4px;min-width:0;padding:0 1px 8px;margin-bottom:7px;overflow:visible}
+#page-list>.list-main-toolbar .brand{flex:1 1 auto;min-width:42px;white-space:nowrap;letter-spacing:.65px;font-size:9px;overflow:hidden;text-overflow:clip}
+#page-list>.list-main-toolbar .flex{display:none}
+#page-list>.list-main-toolbar .btn{flex:0 0 auto;min-width:0;padding:0 6px;font-size:9px;white-space:nowrap}
+#page-list>.list-main-toolbar #list-home{padding:0 6px}
+#page-list>.list-main-toolbar #list-search-toggle{padding:0 6px}
+#page-list>.list-main-toolbar #list-new{padding:0 6px}
+#page-list>.list-main-toolbar #list-add-category{padding:0 6px}
+#page-list>.list-main-toolbar #list-board{padding:0 7px}
+#page-list>.list-action-row{display:none!important}
 #page-list>.list-filter-toolbar{display:flex;flex-wrap:nowrap;align-items:center;gap:5px;padding:0 3px 7px;margin:0 0 8px;min-width:0}
 #page-list>.list-filter-toolbar .btn[data-filter="all"]{flex:0 0 auto;min-width:42px;padding:0 9px}
 #page-list>.list-filter-toolbar .list-fav-filter{flex:0 0 32px!important;width:32px!important;min-width:32px!important;max-width:32px!important;padding:0!important;text-align:center}
@@ -140,10 +144,12 @@
 #page-list>.list-filter-toolbar .flex{flex:1 1 auto;min-width:2px}
 #page-list>.list-filter-toolbar #visible-count{flex:0 0 auto;white-space:nowrap}
 @media(max-width:460px){
- #page-list>.list-main-toolbar{gap:4px;padding-left:1px;padding-right:1px}
- #page-list>.list-main-toolbar .brand{font-size:10px;letter-spacing:.8px}
- #page-list>.list-main-toolbar .btn{padding-left:7px;padding-right:7px;font-size:9px}
- #page-list>.list-action-row{gap:5px;padding-left:1px;padding-bottom:6px}
+ #page-list>.list-main-toolbar{gap:3px;padding-left:0;padding-right:0}
+ #page-list>.list-main-toolbar .brand{font-size:8px;letter-spacing:.45px;min-width:35px}
+ #page-list>.list-main-toolbar .btn{height:24px;min-height:24px;padding-left:5px;padding-right:5px;font-size:8px;letter-spacing:-.15px}
+ #page-list>.list-main-toolbar #list-home{padding-left:5px;padding-right:5px}
+ #page-list>.list-main-toolbar #list-search-toggle,#page-list>.list-main-toolbar #list-new,#page-list>.list-main-toolbar #list-add-category{padding-left:5px;padding-right:5px}
+ #page-list>.list-main-toolbar #list-board{padding-left:6px;padding-right:6px}
  #page-list>.list-filter-toolbar{gap:4px;padding-left:1px;padding-right:1px}
  #page-list>.list-filter-toolbar .list-fav-filter{flex-basis:29px!important;width:29px!important;min-width:29px!important;max-width:29px!important}
  #page-list>.list-filter-toolbar select{max-width:100px;font-size:9px;padding-left:6px;padding-right:16px}
@@ -1310,8 +1316,7 @@ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
 </section>
 
 <section id="page-list" class="page">
-<div class="toolbar list-main-toolbar"><button id="list-home" class="btn">← 홈</button><span class="brand">YOUR RP LOGS</span><span class="flex"></span><button id="list-search-toggle" class="btn">⌕ 검색</button><button id="list-new" class="btn active">＋ 기록</button></div>
-<div class="list-action-row"><button id="list-add-category" class="btn">＋ 분류</button><button id="list-board" class="btn">정리</button></div>
+<div class="toolbar list-main-toolbar"><button id="list-home" class="btn">← 홈</button><span class="brand">YOUR RP LOGS</span><button id="list-search-toggle" class="btn">⌕ 검색</button><button id="list-new" class="btn active">＋ 기록</button><button id="list-add-category" class="btn">＋ 분류</button><button id="list-board" class="btn">정리</button></div>
 <div id="search-row" class="hidden" style="display:flex;gap:5px;align-items:center;margin-bottom:8px;flex-shrink:0"><input id="search" class="field" placeholder="제목 · 플랫폼 · 대사 검색"><button id="search-close" class="btn">닫기</button></div>
 <div class="toolbar list-filter-toolbar"><button class="btn active" data-filter="all">전체</button><button class="btn list-fav-filter" data-filter="fav" aria-label="즐겨찾기">♡</button><select id="cat-filter" class="btn" aria-label="분류 필터" style="appearance:auto"><option value="all">분류</option></select><select id="sort" class="btn" aria-label="정렬"><option value="new">최근순</option><option value="old">오래된 순</option><option value="title">제목순</option></select><span class="flex"></span><span id="visible-count" class="micro">0개</span></div>
 <div class="card-scroll"><div id="cards" class="cards"></div><div id="list-empty" class="empty"><button id="first-log" class="btn" style="margin-top:10px">＋ 첫 RP 기록</button></div></div>
